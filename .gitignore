@@ -1,0 +1,40 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Generic
+Thumbs.db
+Desktop.ini
+.DS_Store
+._
+_.*
+*.cache
+*.log
+*.old
+*.zip
+*.pem
+*~
+
+# Developments
+# --------------------------
+.env.*
+.env
+.firebaserc
+.runtimeconfig.json
+.tool-versions
+dist
+node_modules
+service-account.json
+
+# testing
+coverage
+
+# next.js
+.next/
+
+# turbo
+.turbo
+
+# But Keep these
+# --------------------------
+!.env.*.example
+!.env.example
+!.gitkeep
