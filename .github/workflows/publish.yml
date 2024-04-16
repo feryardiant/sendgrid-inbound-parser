@@ -1,15 +1,16 @@
-name: CI
+name: Publish
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  release:
+    types: [published]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    name: Test
+    name: Build
+
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     steps:
       - name: Checkout
@@ -26,5 +27,8 @@ jobs:
           node-version: 20.x
           cache: pnpm
 
-      - name: Test
-        run: pnpm test
+      - name: Build
+        run: pnpm build
+
+      - name: Publish
+        run: pnpm publish --ignore-scripts --no-git-checks
