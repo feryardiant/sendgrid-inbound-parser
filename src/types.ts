@@ -1,5 +1,13 @@
+import type { Buffer } from 'node:buffer'
 import type { File } from '@google-cloud/storage'
 import type { Attachment, EmailAddress, MessageText, ParsedMail } from 'mailparser'
+
+declare module 'express' {
+  interface Request {
+    rawBody?: Buffer
+    body: NormalizedEmail
+  }
+}
 
 export interface IncomingEmail extends Record<string, any> {
   SPF: string
