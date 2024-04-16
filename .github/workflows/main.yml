@@ -7,6 +7,24 @@ on:
     branches: [main]
 
 jobs:
+  labels:
+    name: Labels
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Labeler
+        uses: actions/labeler@v5
+        with:
+          dot: true
+
   test:
     runs-on: ubuntu-latest
     name: Test
@@ -23,7 +41,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 18.x
           cache: pnpm
 
       - name: Test
