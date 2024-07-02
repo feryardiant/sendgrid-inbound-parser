@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@types/busboy':
     specifier: ^1.5.3
-    version: 1.5.3
+    version: 1.5.4
   '@types/mailparser':
     specifier: ^3.4.4
     version: 3.4.4
@@ -1278,8 +1278,8 @@ packages:
       '@types/node': 20.14.9
     dev: true
 
-  /@types/busboy@1.5.3:
-    resolution: {integrity: sha512-YMBLFN/xBD8bnqywIlGyYqsNFXu6bsiY7h3Ae0kO17qEuTjsqeyYMRPSUDacIKIquws2Y6KjmxAyNx8xB3xQbw==}
+  /@types/busboy@1.5.4:
+    resolution: {integrity: sha512-kG7WrUuAKK0NoyxfQHsVE6j1m01s6kMma64E+OZenQABMQyTJop1DumUWcLwAQ2JzpefU7PDYoRDKl8uZosFjw==}
     dependencies:
       '@types/node': 20.14.9
     dev: false
