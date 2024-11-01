@@ -10,7 +10,7 @@ dependencies:
     version: 1.5.4
   '@types/mailparser':
     specifier: ^3.4.4
-    version: 3.4.4
+    version: 3.4.5
   busboy:
     specifier: ^1.6.0
     version: 1.6.0
@@ -1309,8 +1309,8 @@ packages:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
 
-  /@types/mailparser@3.4.4:
-    resolution: {integrity: sha512-C6Znp2QVS25JqtuPyxj38Qh+QoFcLycdxsvcc6IZCGekhaMBzbdTXzwGzhGoYb3TfKu8IRCNV0sV1o3Od97cEQ==}
+  /@types/mailparser@3.4.5:
+    resolution: {integrity: sha512-EPERBp7fLeFZh7tS2X36MF7jawUx3Y6/0rXciZah3CTYgwLi3e0kpGUJ6FOmUabgzis/U1g+3/JzrVWbWIOGjg==}
     dependencies:
       '@types/node': 20.16.10
       iconv-lite: 0.6.3
