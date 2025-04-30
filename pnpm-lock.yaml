@@ -3551,9 +3551,8 @@ packages:
       mime-types: 2.1.35
     dev: true
 
-  /formidable@2.1.4:
-    resolution: {integrity: sha512-wtSmhQSwevqVtqnwCctBsn45gEbLyZknwW6Q+p76GI0Gi+V35X6dDw0+Z5dCnjQ0uYIv2PmXXj+QQU++JR4EBQ==}
-    deprecated: 'ATTENTION: please upgrade to v3! The v1 and v2 versions are pretty old and deprecated'
+  /formidable@2.1.5:
+    resolution: {integrity: sha512-Oz5Hwvwak/DCaXVVUtPn4oLMLLy1CdclLKO1LFgU7XzDpVMUU5UjlSLpGMocyQNNk8F6IJW9M/YdooSn2MRI+Q==}
     dependencies:
       '@paralleldrive/cuid2': 2.2.2
       dezalgo: 1.0.4
@@ -5794,7 +5793,7 @@ packages:
       debug: 4.4.0
       fast-safe-stringify: 2.1.1
       form-data: 4.0.0
-      formidable: 2.1.4
+      formidable: 2.1.5
       methods: 1.1.2
       mime: 2.6.0
       qs: 6.13.0
@@ -6178,7 +6177,7 @@ packages:
       debug: 4.4.0
       pathe: 1.1.2
       picocolors: 1.1.1
-      vite: 5.4.17(@types/node@20.17.29)
+      vite: 5.4.19(@types/node@20.17.29)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6191,8 +6190,8 @@ packages:
       - terser
     dev: true
 
-  /vite@5.4.17(@types/node@20.17.29):
-    resolution: {integrity: sha512-5+VqZryDj4wgCs55o9Lp+p8GE78TLVg0lasCH5xFZ4jacZjtqZa6JUw9/p0WeAojaOfncSM6v77InkFPGnvPvg==}
+  /vite@5.4.19(@types/node@20.17.29):
+    resolution: {integrity: sha512-qO3aKv3HoQC8QKiNSTuUM1l9o/XX3+c+VTgLHbJWHZGeTPVAg2XwazI9UWzoxjIJCGCV2zU60uqMzjeLZuULqA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -6273,7 +6272,7 @@ packages:
       strip-literal: 2.1.1
       tinybench: 2.9.0
       tinypool: 0.8.4
-      vite: 5.4.17(@types/node@20.17.29)
+      vite: 5.4.19(@types/node@20.17.29)
       vite-node: 1.6.1(@types/node@20.17.29)
       why-is-node-running: 2.3.0
     transitivePeerDependencies:
