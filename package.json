@@ -34,31 +34,31 @@
     "watch": "tsup --watch"
   },
   "dependencies": {
-    "@types/busboy": "^1.5.3",
-    "@types/mailparser": "^3.4.4",
+    "@types/busboy": "^1.5.4",
+    "@types/mailparser": "^3.4.6",
     "busboy": "^1.6.0",
-    "mailparser": "^3.7.0",
+    "mailparser": "^3.7.3",
     "mime-types": "^2.1.35"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.14.0",
-    "@commitlint/cli": "^19.2.2",
-    "@commitlint/config-conventional": "^19.2.2",
+    "@antfu/eslint-config": "^2.27.3",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@firebase/logger": "^0.3.4",
-    "@google-cloud/storage": "^7.10.0",
-    "@types/express": "^4.17.21",
+    "@google-cloud/storage": "^7.16.0",
+    "@types/express": "^4.17.22",
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^20.12.7",
-    "@types/supertest": "^6.0.2",
-    "express": "^4.19.2",
-    "lint-staged": "^15.2.2",
-    "simple-git-hooks": "^2.11.1",
+    "@types/node": "^20.17.48",
+    "@types/supertest": "^6.0.3",
+    "express": "^4.21.2",
+    "lint-staged": "^15.5.2",
+    "simple-git-hooks": "^2.13.0",
     "standard-version": "^9.5.0",
     "supertest": "^6.3.4",
-    "tslib": "^2.6.2",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5",
-    "vitest": "^1.5.0"
+    "tslib": "^2.8.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^1.6.1"
   },
   "commitlint": {
     "extends": [
