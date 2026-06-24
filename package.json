@@ -1,7 +1,7 @@
 {
   "name": "@feryardiant/sendgrid-inbound-parser",
   "type": "module",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "packageManager": "pnpm@11.9.0",
   "description": "Simple library to parse SendGrid Inbound Mail",
   "author": "Fery Wardiyanto",
@@ -34,7 +34,7 @@
     "build": "tsdown",
     "lint": "eslint .",
     "prepare": "simple-git-hooks",
-    "release": "standard-version",
+    "release": "pnpx commit-and-tag-version -s",
     "test": "vitest run",
     "watch": "tsdown --watch"
   },
@@ -54,6 +54,7 @@
     "@types/mime-types": "^3.0.1",
     "@types/node": "^24.13.2",
     "@types/supertest": "^7.2.0",
+    "bumpp": "^11.1.0",
     "express": "^5.2.1",
     "lint-staged": "^17.0.8",
     "mime-types": "^3.0.2",
