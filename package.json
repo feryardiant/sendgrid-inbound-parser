@@ -34,7 +34,6 @@
     "build": "tsdown",
     "lint": "eslint .",
     "prepare": "simple-git-hooks",
-    "release": "pnpx commit-and-tag-version -s",
     "test": "vitest run",
     "watch": "tsdown --watch"
   },
