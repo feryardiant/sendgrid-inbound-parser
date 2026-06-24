@@ -12,13 +12,6 @@ updates:
     schedule:
       interval: monthly
       timezone: Asia/Jakarta
-    versioning-strategy: lockfile-only
+    versioning-strategy: increase-if-necessary
     labels:
       - dependencies
-    groups:
-      dependencies:
-        dependency-type: production
-        patterns: ['*']
-      dev-dependencies:
-        dependency-type: development
-        patterns: ['*']

@@ -1,22 +1,15 @@
-import { extname } from 'node:path'
-import type { Writable } from 'node:stream'
-import type { Buffer } from 'node:buffer'
-import busboy from 'busboy'
+import type { Bucket, File } from '@google-cloud/storage'
 import type { BusboyEvents } from 'busboy'
 import type { Request, RequestHandler } from 'express'
-import { simpleParser } from 'mailparser'
 import type { Attachment, EmailAddress } from 'mailparser'
-import mime from 'mime-types'
-import type { Bucket, File } from '@google-cloud/storage'
+import type { Buffer } from 'node:buffer'
+import type { Writable } from 'node:stream'
 import type { Envelope, NormalizedEmail, ParsedEmail } from './types'
+import { extname } from 'node:path'
+import busboy from 'busboy'
+import { simpleParser } from 'mailparser'
+import mime from 'mime-types'
 import { normalize } from './normalizer'
-
-declare module 'express' {
-  interface Request {
-    rawBody?: Buffer
-    body: NormalizedEmail
-  }
-}
 
 /**
  * Store file buffer into writable stream.
@@ -114,7 +107,7 @@ function parseBody(req: Request): Promise<ParsedEmail> {
   })
 }
 
-export { Attachment, Envelope, EmailAddress, normalize, NormalizedEmail, ParsedEmail }
+export { Attachment, EmailAddress, Envelope, normalize, NormalizedEmail, ParsedEmail }
 
 /**
  * Parse email field in inbound mail body.
@@ -145,8 +138,6 @@ export async function parseEmail(req: Request): Promise<NormalizedEmail> {
  * Express middleware to parse request body.
  */
 export function inboundParser(): RequestHandler {
-  //
-
   return (req, _, next) => {
     if (req.method !== 'POST')
       return next()

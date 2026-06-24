@@ -1,20 +1,20 @@
 integration:
-- changed-files:
-  - any-glob-to-any-file:
-    - '.github/workflows/*.yml'
-    - 'test/**'
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/workflows/*.yml'
+          - 'test/**'
 
 docs:
-- changed-files:
-  - any-glob-to-any-file:
-    - '.env.example'
-    - '**.md'
+  - changed-files:
+      - any-glob-to-any-file:
+          - .env.example
+          - '**.md'
 
 api:
-- changed-files:
-  - any-glob-to-any-file:
-    - 'src/*.ts'
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/*.ts'
 
 enhancement:
-- changed-files:
-  - any-glob-to-any-file: '**'
+  - changed-files:
+      - any-glob-to-any-file: '**'

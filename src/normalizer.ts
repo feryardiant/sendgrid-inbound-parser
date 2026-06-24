@@ -4,12 +4,10 @@ import type { NormalizedMail } from './types'
 function normalizeAddress(address?: AddressObject | AddressObject[]) {
   const normalized = Array.isArray(address)
     ? address.map(part => part.value).reduce((prev, curr) => {
-      Array.isArray(curr)
-        ? prev.push(...curr)
-        : prev.push(curr)
+        prev.push(...curr)
 
-      return prev
-    }, [])
+        return prev
+      }, [])
     : address?.value
 
   return normalized

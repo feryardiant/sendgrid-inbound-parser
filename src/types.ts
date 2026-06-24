@@ -1,6 +1,6 @@
-import type { Buffer } from 'node:buffer'
 import type { File } from '@google-cloud/storage'
 import type { Attachment, EmailAddress, MessageText, ParsedMail } from 'mailparser'
+import type { Buffer } from 'node:buffer'
 
 declare module 'express' {
   interface Request {
