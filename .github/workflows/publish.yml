@@ -29,14 +29,11 @@ jobs:
         run: pnpm build
 
       - name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --ignore-scripts --no-git-checks
 
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: package
 
     permissions:
       contents: write
