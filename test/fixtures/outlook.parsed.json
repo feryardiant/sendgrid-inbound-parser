@@ -1,9 +1,6 @@
 {
-  "dkim": "{@outlook.com : pass}",
   "to": "\"test@feryardiant.id\" <test@feryardiant.id>",
   "from": "Fery Wardiyanto <feryardiant@outlook.com>",
-  "sender_ip": "40.92.53.49",
-  "spam_report": "Spam detection software, running on the system \"mx0068p1iad2.sendgrid.net\",\nhas NOT identified this incoming email as spam.  The original\nmessage has been attached to this so you can view it or label\nsimilar future email.  If you have any questions, see\n@@CONTACT_ADDRESS@@ for details.\n\nContent preview:  Hello from Outlook Hello from Outlook [...] \n\nContent analysis details:   (0.0 points, 5.0 required)\n\n pts rule name              description\n---- ---------------------- --------------------------------------------------\n 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider\n                            (feryardiant[at]outlook.com)\n 0.0 HTML_MESSAGE           BODY: HTML included in message\n 0.0 T_MIME_NO_TEXT         No (properly identified) text body parts\n\n",
   "envelope": {
     "to": [
       "test@feryardiant.id"
@@ -11,15 +8,17 @@
     "from": "feryardiant@outlook.com"
   },
   "subject": "Sent from Outlook",
-  "spam_score": 0.012,
   "charsets": {
     "to": "UTF-8",
     "subject": "UTF-8",
     "from": "UTF-8"
   },
+  "dkim": "{@outlook.com : pass}",
+  "sender_ip": "40.92.53.49",
+  "spam_report": "Spam detection software, running on the system \"mx0068p1iad2.sendgrid.net\",\nhas NOT identified this incoming email as spam.  The original\nmessage has been attached to this so you can view it or label\nsimilar future email.  If you have any questions, see\n@@CONTACT_ADDRESS@@ for details.\n\nContent preview:  Hello from Outlook Hello from Outlook [...] \n\nContent analysis details:   (0.0 points, 5.0 required)\n\n pts rule name              description\n---- ---------------------- --------------------------------------------------\n 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider\n                            (feryardiant[at]outlook.com)\n 0.0 HTML_MESSAGE           BODY: HTML included in message\n 0.0 T_MIME_NO_TEXT         No (properly identified) text body parts\n\n",
+  "spam_score": 0.012,
   "SPF": "pass",
   "email": {
-    "attachments": [],
     "headers": {
       "received": [
         "by mx0068p1iad2.sendgrid.net with SMTP id pIWdzYRDgh Thu, 28 Jul 2022 09:40:18 +0000 (UTC)",
@@ -99,21 +98,8 @@
       "x-ms-exchange-crosstenant-id": "84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa",
       "x-ms-exchange-transport-crosstenantheadersstamped": "TY0PR04MB5635"
     },
-    "html": "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<style type=\"text/css\" style=\"display:none;\"> P {margin-top:0;margin-bottom:0;} </style>\n</head>\n<body dir=\"ltr\">\n<div style=\"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);\" class=\"elementToProof\">\nHello from Outlook</div>\n</body>\n</html>\n",
-    "text": "Hello from Outlook\n",
-    "textAsHtml": "<p>Hello from Outlook</p>",
-    "subject": "Sent from Outlook",
+    "attachments": [],
     "date": "2022-07-28T09:40:14.000Z",
-    "to": {
-      "value": [
-        {
-          "address": "test@feryardiant.id",
-          "name": ""
-        }
-      ],
-      "html": "<span class=\"mp_address_group\"><a href=\"mailto:test@feryardiant.id\" class=\"mp_address_email\">test@feryardiant.id</a></span>",
-      "text": "test@feryardiant.id"
-    },
     "from": {
       "value": [
         {
@@ -124,6 +110,20 @@
       "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">Fery Wardiyanto</span> &lt;<a href=\"mailto:feryardiant@outlook.com\" class=\"mp_address_email\">feryardiant@outlook.com</a>&gt;</span>",
       "text": "Fery Wardiyanto <feryardiant@outlook.com>"
     },
-    "messageId": "<SEZPR04MB56978A389E9B1C6CA21453A1B1969@SEZPR04MB5697.apcprd04.prod.outlook.com>"
+    "messageId": "<SEZPR04MB56978A389E9B1C6CA21453A1B1969@SEZPR04MB5697.apcprd04.prod.outlook.com>",
+    "subject": "Sent from Outlook",
+    "to": {
+      "value": [
+        {
+          "address": "test@feryardiant.id",
+          "name": ""
+        }
+      ],
+      "html": "<span class=\"mp_address_group\"><a href=\"mailto:test@feryardiant.id\" class=\"mp_address_email\">test@feryardiant.id</a></span>",
+      "text": "test@feryardiant.id"
+    },
+    "text": "Hello from Outlook\n",
+    "textAsHtml": "<p>Hello from Outlook</p>",
+    "html": "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<style type=\"text/css\" style=\"display:none;\"> P {margin-top:0;margin-bottom:0;} </style>\n</head>\n<body dir=\"ltr\">\n<div style=\"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);\" class=\"elementToProof\">\nHello from Outlook</div>\n</body>\n</html>\n"
   }
 }

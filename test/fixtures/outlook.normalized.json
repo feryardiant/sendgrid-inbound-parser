@@ -1,9 +1,6 @@
 {
-  "dkim": "{@outlook.com : pass}",
   "to": "\"test@feryardiant.id\" <test@feryardiant.id>",
   "from": "Fery Wardiyanto <feryardiant@outlook.com>",
-  "sender_ip": "40.92.53.49",
-  "spam_report": "Spam detection software, running on the system \"mx0068p1iad2.sendgrid.net\",\nhas NOT identified this incoming email as spam.  The original\nmessage has been attached to this so you can view it or label\nsimilar future email.  If you have any questions, see\n@@CONTACT_ADDRESS@@ for details.\n\nContent preview:  Hello from Outlook Hello from Outlook [...] \n\nContent analysis details:   (0.0 points, 5.0 required)\n\n pts rule name              description\n---- ---------------------- --------------------------------------------------\n 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider\n                            (feryardiant[at]outlook.com)\n 0.0 HTML_MESSAGE           BODY: HTML included in message\n 0.0 T_MIME_NO_TEXT         No (properly identified) text body parts\n\n",
   "envelope": {
     "to": [
       "test@feryardiant.id"
@@ -11,12 +8,15 @@
     "from": "feryardiant@outlook.com"
   },
   "subject": "Sent from Outlook",
-  "spam_score": 0.012,
   "charsets": {
     "to": "UTF-8",
     "subject": "UTF-8",
     "from": "UTF-8"
   },
+  "dkim": "{@outlook.com : pass}",
+  "sender_ip": "40.92.53.49",
+  "spam_report": "Spam detection software, running on the system \"mx0068p1iad2.sendgrid.net\",\nhas NOT identified this incoming email as spam.  The original\nmessage has been attached to this so you can view it or label\nsimilar future email.  If you have any questions, see\n@@CONTACT_ADDRESS@@ for details.\n\nContent preview:  Hello from Outlook Hello from Outlook [...] \n\nContent analysis details:   (0.0 points, 5.0 required)\n\n pts rule name              description\n---- ---------------------- --------------------------------------------------\n 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider\n                            (feryardiant[at]outlook.com)\n 0.0 HTML_MESSAGE           BODY: HTML included in message\n 0.0 T_MIME_NO_TEXT         No (properly identified) text body parts\n\n",
+  "spam_score": 0.012,
   "SPF": "pass",
   "email": {
     "headers": {
@@ -112,13 +112,13 @@
         }
       ]
     },
+    "messageId": "<SEZPR04MB56978A389E9B1C6CA21453A1B1969@SEZPR04MB5697.apcprd04.prod.outlook.com>",
     "subject": "Sent from Outlook",
+    "topic": "Sent from Outlook",
     "message": {
       "html": "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n<style type=\"text/css\" style=\"display:none;\"> P {margin-top:0;margin-bottom:0;} </style>\n</head>\n<body dir=\"ltr\">\n<div style=\"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);\" class=\"elementToProof\">\nHello from Outlook</div>\n</body>\n</html>\n",
       "text": "Hello from Outlook\n",
       "textAsHtml": "<p>Hello from Outlook</p>"
-    },
-    "topic": "Sent from Outlook",
-    "messageId": "<SEZPR04MB56978A389E9B1C6CA21453A1B1969@SEZPR04MB5697.apcprd04.prod.outlook.com>"
+    }
   }
 }

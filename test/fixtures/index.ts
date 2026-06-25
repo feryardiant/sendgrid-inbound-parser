@@ -1,12 +1,13 @@
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
+import { type ParsedMail } from 'mailparser'
+import { globSync, readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 export type Provider = 'gmail' | 'outlook' | 'yahoo'
 
 export const providers: Provider[] = ['gmail', 'outlook', 'yahoo']
 
 export async function fixture(provider: Provider) {
-  const raw = readFileSync(resolve(__dirname, `./${provider}.raw.txt`))
+  const raw = readFileSync(resolve(`./${provider}.raw.txt`))
   const { email: parsed, ...body } = await import(`./${provider}.parsed.json`)
   const { email: normalized } = await import(`./${provider}.normalized.json`)
 
@@ -16,30 +17,41 @@ export async function fixture(provider: Provider) {
   }
 }
 
-// 'gmail-attached.normalized.json',
-// 'gmail-attached.parsed.json',
-// 'gmail-attached.raw.txt',
-// 'gmail-reply.normalized.json',
-// 'gmail-reply.parsed.json',
-// 'gmail-reply.raw.txt',
-// 'gmail.normalized.json',
-// 'gmail.parsed.json',
-// 'gmail.raw.txt',
-// 'outlook-attached.normalized.json',
-// 'outlook-attached.parsed.json',
-// 'outlook-attached.raw.txt',
-// 'outlook-reply.normalized.json',
-// 'outlook-reply.parsed.json',
-// 'outlook-reply.txt',
-// 'outlook.normalized.json',
-// 'outlook.parsed.json',
-// 'outlook.raw.txt',
-// 'yahoo-attached.normalized.json',
-// 'yahoo-attached.parsed.json',
-// 'yahoo-attached.raw.txt',
-// 'yahoo-reply.normalized.json',
-// 'yahoo-reply.parsed.json',
-// 'yahoo-reply.raw.txt',
-// 'yahoo.normalized.json',
-// 'yahoo.parsed.json',
-// 'yahoo.raw.txt',
+export interface Fixture {
+  raw: string
+  normalized: Record<string, any>
+  parsed: {
+    email: ParsedMail
+    [key: string]: any
+  }
+}
+
+export function createFixtures() {
+  const fixtures: Record<string, Fixture> = {}
+
+  for (const filename of globSync('./*.{raw,normalized,parsed}.*', { cwd: import.meta.dirname })) {
+    const filepath = resolve(import.meta.dirname, filename)
+    const [name, type, ext] = filename.split('.') as [string, keyof Fixture, 'json' | 'txt']
+    const content = readFileSync(filepath, 'utf8')
+
+    fixtures[name] = fixtures[name] || {}
+
+    if (type === 'raw' && ext === 'txt') {
+      fixtures[name][type] = content
+      continue
+    }
+
+    const obj = JSON.parse(content)
+    // const headers = new Map()
+
+    // for (const [key, value] of Object.entries(obj.email.headers)) {
+    //   headers.set(key, value as string)
+    // }
+
+    // obj.email.headers = headers
+
+    fixtures[name][type] = obj
+  }
+
+  return fixtures
+}

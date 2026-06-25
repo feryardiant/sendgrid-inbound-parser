@@ -1,22 +1,22 @@
 {
-  "dkim": "{@gmail.com : pass}",
-  "subject": "Sent from Gmail",
   "to": "test@feryardiant.id",
-  "spam_score": 0.002,
   "from": "Fery Wardiyanto <ferywardiyanto@gmail.com>",
-  "sender_ip": "209.85.218.41",
-  "spam_report": "Spam detection software, running on the system \"mx0081p1iad2.sendgrid.net\",\nhas NOT identified this incoming email as spam.  The original\nmessage has been attached to this so you can view it or label\nsimilar future email.  If you have any questions, see\n@@CONTACT_ADDRESS@@ for details.\n\nContent preview:  Hello from Gmail --- Sincerely :) Fery Wardiyanto Hello from\n   Gmail [...] \n\nContent analysis details:   (0.0 points, 5.0 required)\n\n pts rule name              description\n---- ---------------------- --------------------------------------------------\n 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider\n                            (ferywardiyanto[at]gmail.com)\n 0.0 HTML_MESSAGE           BODY: HTML included in message\n\n",
   "envelope": {
     "to": [
       "test@feryardiant.id"
     ],
     "from": "ferywardiyanto@gmail.com"
   },
+  "subject": "Sent from Gmail",
   "charsets": {
     "to": "UTF-8",
     "subject": "UTF-8",
     "from": "UTF-8"
   },
+  "dkim": "{@gmail.com : pass}",
+  "sender_ip": "209.85.218.41",
+  "spam_report": "Spam detection software, running on the system \"mx0081p1iad2.sendgrid.net\",\nhas NOT identified this incoming email as spam.  The original\nmessage has been attached to this so you can view it or label\nsimilar future email.  If you have any questions, see\n@@CONTACT_ADDRESS@@ for details.\n\nContent preview:  Hello from Gmail --- Sincerely :) Fery Wardiyanto Hello from\n   Gmail [...] \n\nContent analysis details:   (0.0 points, 5.0 required)\n\n pts rule name              description\n---- ---------------------- --------------------------------------------------\n 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider\n                            (ferywardiyanto[at]gmail.com)\n 0.0 HTML_MESSAGE           BODY: HTML included in message\n\n",
+  "spam_score": 0.002,
   "SPF": "pass",
   "email": {
     "headers": {
@@ -94,20 +94,20 @@
           "address": "test@feryardiant.id",
           "name": ""
         }
+      ],
+      "replyTo": [
+        {
+          "address": "ferywardiyanto@gmail.com",
+          "name": ""
+        }
       ]
     },
+    "messageId": "<CAObhxnzbc-CQstq-1LutmMeyp+6SRLUUtfkKXiVALD3T0RcSWw@mail.gmail.com>",
     "subject": "Sent from Gmail",
     "message": {
       "html": "<div dir=\"ltr\">Hello from Gmail<div><br clear=\"all\"><div><div dir=\"ltr\" class=\"gmail_signature\" data-smartmail=\"gmail_signature\"><div dir=\"ltr\"><div><div dir=\"ltr\"><div dir=\"ltr\"><div><span style=\"font-size:small\">---</span></div><div>Sincerely<span style=\"font-size:small\"> :)</span></div><div><font size=\"2\">Fery Wardiyanto<br></font></div></div></div></div></div></div></div></div></div>\n",
       "text": "Hello from Gmail\n\n---\nSincerely :)\nFery Wardiyanto\n",
       "textAsHtml": "<p>Hello from Gmail</p><p>---<br/>Sincerely :)<br/>Fery Wardiyanto</p>"
-    },
-    "messageId": "<CAObhxnzbc-CQstq-1LutmMeyp+6SRLUUtfkKXiVALD3T0RcSWw@mail.gmail.com>",
-    "replyTo": [
-      {
-        "address": "ferywardiyanto@gmail.com",
-        "name": ""
-      }
-    ]
+    }
   }
 }
