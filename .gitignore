@@ -1,37 +1,54 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Generic
+# --------------------------
 Thumbs.db
 Desktop.ini
 .DS_Store
-._
-_.*
-*.cache
-*.log
+.directory
+._*
+*.DS_Store
 *.old
-*.zip
-*.pem
+*.log
+*.tmp
+
+# caches
+.cache
+*.cache
 *~
 
-# Developments
+# distribution
+dist
+dist-ssr
+*.zip
+
+# IDE Project Configurations
+# --------------------------
+.idea
+.project
+.settings
+*.sublime-*
+
+# AI Agents
+# --------------------------
+.agents
+.cursor
+.gemini
+.opencode
+CLAUDE.md
+GEMINI.md
+
+# Development files
 # --------------------------
 .env.*
 .env
-.firebaserc
-.runtimeconfig.json
 .tool-versions
-dist
 node_modules
-service-account.json
+reports
 
-# testing
-coverage
-
-# next.js
-.next/
-
-# turbo
-.turbo
+# Node.js lock files
+.pnpm-store
+package-lock.json
+bun.lock
+yarn.lock
 
 # But Keep these
 # --------------------------
