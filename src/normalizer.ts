@@ -1,75 +1,51 @@
-import type { AddressObject, EmailAddress, ParsedMail } from 'mailparser'
-import type { NormalizedMail } from './types'
+import type { AddressObject, Attachment, EmailAddress, Headers, MessageText, ParsedMail } from 'mailparser'
 
-function normalizeAddress(address?: AddressObject | AddressObject[]) {
-  const normalized = Array.isArray(address)
-    ? address.map(part => part.value).reduce((prev, curr) => {
-        prev.push(...curr)
-
-        return prev
-      }, [])
-    : address?.value
-
-  return normalized
+export interface Envelope extends Record<string, any> {
+  from: EmailAddress
+  to: EmailAddress[]
+  cc?: EmailAddress[]
+  bcc?: EmailAddress[]
+  replyTo?: EmailAddress | EmailAddress[]
 }
 
-function normalizeReferences(refs?: string | string[]) {
-  if (!refs)
-    return []
-
-  const references = Array.isArray(refs) ? refs : refs.split(',')
-
-  return references
-    .reduce((arr, ref) => {
-      arr.push(...ref.split(','))
-      return arr.filter(ref => !ref.includes('.ref@mail.yahoo.com'))
-    }, [] as string[])
-    .filter(ref => ref.length > 0)
+export interface NormalizedMail extends Record<string, any> {
+  headers: Map<string, any>
+  date: Date
+  // headerLines: HeaderLines
+  attachments: Attachment[]
+  messageId: string
+  subject: string
+  topic?: string
+  references: string[]
+  inReplyTo?: string
+  envelope: Envelope
+  message: Record<keyof MessageText | string, string>
 }
 
-const excludedHeaders: string[] = [
-  'content-type',
-  'date',
-  'from',
-  'to',
-  'cc',
-  'bcc',
-  'mime-version',
-  'in-reply-to',
-  'message-id',
-  'references',
-  'reply-to',
-  'subject',
-]
+export { type Attachment, type EmailAddress, type Headers, type MessageText, type ParsedMail }
 
 /**
  * Normalize parsed-mail from 'mailparser' package
  */
 export function normalize(email: ParsedMail & Record<string, any>): NormalizedMail {
   const normalized: NormalizedMail = {
+    headers: new Map<string, any>(),
     date: email.date as Date,
+    attachments: email.attachments,
+    messageId: email.messageId as string,
+    subject: email.subject as string,
+    topic: normalizeTopic(email),
+    references: normalizeReferences(email.references),
     envelope: {
       from: email.from?.value[0] as EmailAddress,
       to: normalizeAddress(email.to) as EmailAddress[],
     },
-    subject: email.subject as string,
-    attachments: email.attachments,
-    messageId: email.messageId as string,
-    headers: new Map<string, any>(),
-    references: normalizeReferences(email.references),
     message: {},
   }
 
   email.headers.forEach((value, key) => {
-    if (!excludedHeaders.includes(key))
-      normalized.headers.set(key, value)
+    normalized.headers.set(key, value)
   })
-
-  normalized.topic = email.headers.has('thread-topic')
-    ? email.headers.get('thread-topic')?.toString()
-    : email.subject?.toLowerCase().startsWith('re: ')
-      ? email.subject.slice(4)
-      : email.subject
 
   const participants = ['cc', 'bcc', 'replyTo']
   const messages = ['html', 'text', 'textAsHtml']
@@ -92,4 +68,50 @@ export function normalize(email: ParsedMail & Record<string, any>): NormalizedMa
   }
 
   return normalized
+}
+
+function normalizeTopic(email: ParsedMail): string | undefined {
+  if ('topic' in email) {
+    // Gmail and Outlook
+    return email.topic as string
+  }
+
+  if (email.headers.has('thread-topic')) {
+    // Outlook only
+    return email.headers.get('thread-topic')?.toString()
+  }
+
+  if (email.subject?.toLowerCase().startsWith('re: ')) {
+    // Yahoo
+    return email.subject.slice(4)
+  }
+
+  return email.subject
+}
+
+function normalizeAddress(recipient?: AddressObject | AddressObject[]) {
+  if (typeof recipient === 'undefined')
+    return undefined
+
+  const address: AddressObject[] = Array.isArray(recipient) ? recipient : [recipient]
+
+  return address.reduce((res, addr) => {
+    res.push(...addr.value)
+
+    return res
+  }, [] as EmailAddress[])
+}
+
+function normalizeReferences(refs?: string | string[]) {
+  if (!refs)
+    return []
+
+  const references = Array.isArray(refs) ? refs : refs.split(',')
+
+  return references
+    .reduce((arr, ref) => {
+      arr.push(...ref.split(','))
+      return arr.filter(ref => !ref.includes('.ref@mail.yahoo.com'))
+    }, [] as string[])
+    .filter(ref => ref.length > 0)
 }

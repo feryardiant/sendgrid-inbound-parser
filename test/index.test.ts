@@ -1,44 +1,65 @@
-import type { Request, Response } from 'express'
+import type { Express } from 'express'
 import express from 'express'
 import request from 'supertest'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import pkg from '../package.json'
 import { inboundParser } from '../src'
-// import { fixture, providers } from './fixtures'
+import { createFixtures } from './fixtures'
 
-let app: any
+describe('integration', () => {
+  let app: Express
+  const fixtures = createFixtures()
 
-describe(pkg.name, () => {
   beforeEach(() => {
     app = express()
 
-    app.all('/', inboundParser(), (req: Request, res: Response) => {
-      res.json({
-        ok: true,
-        hasMail: !!req.body?.email,
-      })
+    app.all('/', inboundParser(), (req, res) => {
+      const ret: { ok: boolean, parsed?: Omit<typeof req.body, 'headers'> } = { ok: true }
+
+      if (req.body) {
+        ret.parsed = req.body
+      }
+
+      res.json(ret)
     })
   })
 
   it('should not have email body', async () => {
     const res = await request(app).get('/')
 
-    expect(res.body.ok).equal(true)
-    expect(res.body.hasMail).equal(false)
     expect(res.status).equal(200)
+    expect(res.body.ok).equal(true)
+    expect(res.body.parsed).toBeUndefined()
   })
 
-  // it.each(providers)('should have %s mail body', async (provider) => {
-  //   const { email } = await fixture(provider)
-  //   const res = await request(app)
-  //     .post('/')
-  //     .set('Content-Type', 'multipart/form-data')
-  //     .field('SPF', 'pass')
-  //     .field('email', email.raw)
+  for (const [key, fixture] of Object.entries(fixtures)) {
+    it(`should parse "${key}"`, async () => {
+      const keys = ['dkim', 'subject', 'SPF', 'sender_ip', 'spam_report', 'spam_score']
+      const input: Record<string, any> = {
+        email: fixture.raw,
+      }
 
-  //   expect(res.body.ok).equal(true)
-  //   expect(res.body.hasMail).equal(true)
-  //   expect(res.status).equal(200)
-  // })
+      for (const key of keys) {
+        input[key] = fixture.parsed[key]
+      }
+
+      const res = await request(app)
+        .post('/')
+        .set('Content-Type', 'multipart/form-data')
+        .field(input)
+
+      expect(res.status).equal(200)
+      expect(res.body.ok).equal(true)
+      expect(res.body.parsed).has.keys(Object.keys(input))
+
+      for (const [key, value] of Object.entries(fixture.normalized.email)) {
+        if (['headers', 'attachments'].includes(key))
+          continue
+
+        const { email } = res.body.parsed
+
+        expect(email[key]).toEqual(value)
+      }
+    })
+  }
 })

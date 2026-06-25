@@ -8,11 +8,11 @@
       "~/*": ["./src/*"]
     },
     "resolveJsonModule": true,
+    "types": ["node", "vitest"],
     "allowJs": true,
     "strict": true,
     "declaration": true,
     "noEmit": true,
-    "outDir": "dist",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -20,9 +20,9 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
+  "include": ["src/**/*", "test/**/*"],
   "exclude": [
     "**/*.old/**",
-    "**/fixtures/**",
     "dist/**",
     "node_modules/**"
   ]
