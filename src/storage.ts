@@ -1,12 +1,15 @@
+import { extname } from 'node:path'
 import type { Bucket, File } from '@google-cloud/storage'
 import type { Attachment } from 'mailparser'
-import { extname } from 'node:path'
 import { extension } from 'mime-types'
 
 /**
  * Store the attachment file to google storage bucket.
  */
-export function storeAttachment(attachment: Attachment, bucket: Bucket): Promise<File> {
+export function storeAttachment(
+  attachment: Attachment,
+  bucket: Bucket,
+): Promise<File> {
   const file = bucket.file(`attachments/${getFilename(attachment)}`)
 
   const stream = file.createWriteStream({

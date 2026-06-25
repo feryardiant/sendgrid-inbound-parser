@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "build": "tsdown",
-    "lint": "eslint .",
+    "lint": "biome check",
     "prepare": "simple-git-hooks",
     "test": "vitest run",
     "watch": "tsdown --watch"
@@ -54,7 +54,7 @@
     "mailparser": "^3.9.11"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.0.0",
+    "@biomejs/biome": "2.5.1",
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@firebase/logger": "^0.5.1",
@@ -86,11 +86,10 @@
   },
   "lint-staged": {
     "**/*.{js,ts}": [
-      "eslint --fix"
+      "biome check --write --no-errors-on-unmatched"
     ],
-    "*.json": [
-      "eslint --fix"
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
     ]
-  },
-  "standard-version": {}
+  }
 }

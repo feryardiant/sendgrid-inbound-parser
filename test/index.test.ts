@@ -1,9 +1,9 @@
+import { inboundParser } from '@feryardiant/sendgrid-inbound-parser'
 import type { Express } from 'express'
 import express from 'express'
 import request from 'supertest'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { inboundParser } from '../src'
 import { createFixtures } from './fixtures'
 
 describe('integration', () => {
@@ -14,7 +14,9 @@ describe('integration', () => {
     app = express()
 
     app.all('/', inboundParser(), (req, res) => {
-      const ret: { ok: boolean, parsed?: Omit<typeof req.body, 'headers'> } = { ok: true }
+      const ret: { ok: boolean; parsed?: Omit<typeof req.body, 'headers'> } = {
+        ok: true,
+      }
 
       if (req.body) {
         ret.parsed = req.body
@@ -34,7 +36,14 @@ describe('integration', () => {
 
   for (const [key, fixture] of Object.entries(fixtures)) {
     it(`should parse "${key}"`, async () => {
-      const keys = ['dkim', 'subject', 'SPF', 'sender_ip', 'spam_report', 'spam_score']
+      const keys = [
+        'dkim',
+        'subject',
+        'SPF',
+        'sender_ip',
+        'spam_report',
+        'spam_score',
+      ]
       const input: Record<string, any> = {
         email: fixture.raw,
       }
@@ -53,8 +62,7 @@ describe('integration', () => {
       expect(res.body.parsed).has.keys(Object.keys(input))
 
       for (const [key, value] of Object.entries(fixture.normalized.email)) {
-        if (['headers', 'attachments'].includes(key))
-          continue
+        if (['headers', 'attachments'].includes(key)) continue
 
         const { email } = res.body.parsed
 

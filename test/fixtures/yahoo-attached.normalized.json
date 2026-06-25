@@ -2,9 +2,7 @@
   "to": "\"test@feryardiant.id\" <test@feryardiant.id>",
   "from": "\"ferywardiyanto@yahoo.com\" <ferywardiyanto@yahoo.com>",
   "envelope": {
-    "to": [
-      "test@feryardiant.id"
-    ],
+    "to": ["test@feryardiant.id"],
     "from": "ferywardiyanto@yahoo.com"
   },
   "subject": "Sent with Attachment from Yahoo!",

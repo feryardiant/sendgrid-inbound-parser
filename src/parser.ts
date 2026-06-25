@@ -1,8 +1,8 @@
-import type { BusboyEvents } from 'busboy'
 import type { IncomingMessage } from 'node:http'
-import type { NormalizedMail } from './normalizer'
+import type { BusboyEvents } from 'busboy'
 import busboy from 'busboy'
 import { simpleParser } from 'mailparser'
+import type { NormalizedMail } from './normalizer'
 import { normalize } from './normalizer'
 
 export interface ParsedEmail extends Record<string, any> {
@@ -12,7 +12,10 @@ export interface ParsedEmail extends Record<string, any> {
 /**
  * Parse email field in inbound mail body.
  */
-export async function parseEmail(req: IncomingMessage, field: string = 'email') {
+export async function parseEmail(
+  req: IncomingMessage,
+  field: string = 'email',
+) {
   const parsed = await parse(req)
   const result: Record<string, any> = {}
 

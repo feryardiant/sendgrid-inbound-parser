@@ -2,9 +2,7 @@
   "to": "\"test@feryardiant.id\" <test@feryardiant.id>",
   "from": "\"ferywardiyanto@yahoo.com\" <ferywardiyanto@yahoo.com>",
   "envelope": {
-    "to": [
-      "test@feryardiant.id"
-    ],
+    "to": ["test@feryardiant.id"],
     "from": "ferywardiyanto@yahoo.com"
   },
   "subject": "Re: Sent with Attachment from Yahoo!",
@@ -121,9 +119,7 @@
     },
     "inReplyTo": "<1103006335.3271130.1658998330549@mail.yahoo.com>",
     "messageId": "<1493015472.3283472.1659001093863@mail.yahoo.com>",
-    "references": [
-      "<1103006335.3271130.1658998330549@mail.yahoo.com>"
-    ],
+    "references": ["<1103006335.3271130.1658998330549@mail.yahoo.com>"],
     "subject": "Re: Sent with Attachment from Yahoo!",
     "topic": "Sent with Attachment from Yahoo!",
     "message": {

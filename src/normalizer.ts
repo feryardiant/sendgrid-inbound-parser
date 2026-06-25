@@ -1,4 +1,11 @@
-import type { AddressObject, Attachment, EmailAddress, Headers, MessageText, ParsedMail } from 'mailparser'
+import type {
+  AddressObject,
+  Attachment,
+  EmailAddress,
+  Headers,
+  MessageText,
+  ParsedMail,
+} from 'mailparser'
 
 export interface Envelope extends Record<string, any> {
   from: EmailAddress
@@ -22,12 +29,14 @@ export interface NormalizedMail extends Record<string, any> {
   message: Record<keyof MessageText | string, string>
 }
 
-export { type Attachment, type EmailAddress, type Headers, type MessageText, type ParsedMail }
+export type { Attachment, EmailAddress, Headers, MessageText, ParsedMail }
 
 /**
  * Normalize parsed-mail from 'mailparser' package
  */
-export function normalize(email: ParsedMail & Record<string, any>): NormalizedMail {
+export function normalize(
+  email: ParsedMail & Record<string, any>,
+): NormalizedMail {
   const normalized: NormalizedMail = {
     headers: new Map<string, any>(),
     date: email.date as Date,
@@ -51,8 +60,7 @@ export function normalize(email: ParsedMail & Record<string, any>): NormalizedMa
   const messages = ['html', 'text', 'textAsHtml']
 
   for (const key of ['inReplyTo', ...participants, ...messages]) {
-    if (!email[key])
-      continue
+    if (!email[key]) continue
 
     if (participants.includes(key)) {
       normalized.envelope[key] = normalizeAddress(email[key])
@@ -90,10 +98,11 @@ function normalizeTopic(email: ParsedMail): string | undefined {
 }
 
 function normalizeAddress(recipient?: AddressObject | AddressObject[]) {
-  if (typeof recipient === 'undefined')
-    return undefined
+  if (typeof recipient === 'undefined') return undefined
 
-  const address: AddressObject[] = Array.isArray(recipient) ? recipient : [recipient]
+  const address: AddressObject[] = Array.isArray(recipient)
+    ? recipient
+    : [recipient]
 
   return address.reduce((res, addr) => {
     res.push(...addr.value)
@@ -103,15 +112,14 @@ function normalizeAddress(recipient?: AddressObject | AddressObject[]) {
 }
 
 function normalizeReferences(refs?: string | string[]) {
-  if (!refs)
-    return []
+  if (!refs) return []
 
   const references = Array.isArray(refs) ? refs : refs.split(',')
 
   return references
     .reduce((arr, ref) => {
       arr.push(...ref.split(','))
-      return arr.filter(ref => !ref.includes('.ref@mail.yahoo.com'))
+      return arr.filter((ref) => !ref.includes('.ref@mail.yahoo.com'))
     }, [] as string[])
-    .filter(ref => ref.length > 0)
+    .filter((ref) => ref.length > 0)
 }

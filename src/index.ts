@@ -16,18 +16,21 @@ const defaultOptions: Options = {
 /**
  * Express middleware to parse request body.
  */
-export function inboundParser(options: Options = defaultOptions): RequestHandler<any, any, ParsedEmail> {
+export function inboundParser(
+  options: Options = defaultOptions,
+): RequestHandler<any, any, ParsedEmail> {
   const { field } = { ...defaultOptions, ...options }
 
   return (req, _, next) => {
-    if (req.method !== 'POST')
-      return next()
+    if (req.method !== 'POST') return next()
 
-    parseEmail(req, field).then((parsed) => {
-      req.body = parsed
-      next()
-    }).catch((err) => {
-      next(err)
-    })
+    parseEmail(req, field)
+      .then((parsed) => {
+        req.body = parsed
+        next()
+      })
+      .catch((err) => {
+        next(err)
+      })
   }
 }

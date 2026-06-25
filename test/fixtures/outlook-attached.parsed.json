@@ -2,9 +2,7 @@
   "to": "\"test@feryardiant.id\" <test@feryardiant.id>",
   "from": "Fery Wardiyanto <feryardiant@outlook.com>",
   "envelope": {
-    "to": [
-      "test@feryardiant.id"
-    ],
+    "to": ["test@feryardiant.id"],
     "from": "feryardiant@outlook.com"
   },
   "subject": "Sent with Attachment from Outlook",
