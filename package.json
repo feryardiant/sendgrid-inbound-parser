@@ -63,7 +63,7 @@
     "mailparser": "^3.9.11"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.1",
+    "@biomejs/biome": "2.5.14",
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@types/busboy": "^1.5.4",
